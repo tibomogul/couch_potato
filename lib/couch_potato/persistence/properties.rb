@@ -93,8 +93,8 @@ module CouchPotato
           active_support_module.module_eval do
             undef_method(name) if instance_methods.include?(name)
           end
-          cache = send(:attribute_method_matchers_cache)
-          cache.delete(name)
+          cache = send(:attribute_method_patterns_cache)
+          cache.clear
 
           define_attribute_method name
           properties << SimpleProperty.new(self, name, options)
